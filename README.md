@@ -1,4 +1,5 @@
 MTML: An efficient multi-trait multi-locus GWAS method based on Cauchy combination test.           
+
 #' @param kk is the inital genomic relationship matrix.           
 #' @param psmatrix is the initial P-value.           
 #' @param Likelihood is the likelihood function type, "REML" represents restrictive maximum likelihood; "ML" represents maximum likelihood.           
@@ -10,7 +11,7 @@ MTML: An efficient multi-trait multi-locus GWAS method based on Cauchy combinati
 #' @param N represents execution/loop count, N = (500,200,100).           
 #' @param spvalue is the P-value threshold for significance in the multiple traits part.           
 
-# An simple example for MTML           
+### An simple example for MTML ###           
 
 rm(list=ls())     
 library(dplyr)         
@@ -39,8 +40,8 @@ CLO <- 8
 snp <- 4000   
 spvalue<- 0.05                  
 
-#########################################################################################################
-### Simulation           
+
+## Simulation           
 
 QTN <- read.csv("QTNs.csv",header = F)  # four QTNs           
 trait_info <- matrix(c(2,5,10,500,200,100),3,2)            
@@ -49,10 +50,8 @@ genetic_effect2 <- matrix(c(3.1944,2.8571,2.4743,1.4286),nrow=4,ncol=1)
 simu_data(QTN,trait_info,genetic_effect1,genetic_effect2)           
 
 
-##########################################################################################################
-### MTML Method           
+## Perform MTML            
          
- 
 genotype <- read.csv("snps.csv",header=T)           
 gen <- cbind(as.matrix(genotype[1:4000,1:3]),as.matrix(genotype[1:4000,4:202]))           
 trait_info <- matrix(c(2,5,10,10,4,2),3,2)           
