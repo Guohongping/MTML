@@ -12,9 +12,9 @@ MTML: An efficient multi-trait multi-locus GWAS method based on Cauchy combinati
 
 # An simple example for MTML
 
-rm(list=ls())
-library(dplyr)
-library(MASS)
+rm(list=ls())     
+library(dplyr)         
+library(MASS)         
 library(readxl)
 library(mvtnorm)
 library(parallel)
