@@ -1,6 +1,4 @@
- # MTML
- MTML: An efficient multi-trait multi-locus GWAS method based on Cauchy combination test.
- 
+MTML: An efficient multi-trait multi-locus GWAS method based on Cauchy combination test.
 #' @param kk is the inital genomic relationship matrix.
 #' @param psmatrix is the initial P-value.
 #' @param Likelihood is the likelihood function type, "REML" represents restrictive maximum likelihood; "ML" represents maximum likelihood.
