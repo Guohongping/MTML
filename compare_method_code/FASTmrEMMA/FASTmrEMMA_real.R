@@ -20,14 +20,14 @@ N <- 3
 trait_k <- 3
 
 #****************************************************************************************************#
-source("./MTML_code_data/compare_method_code/FASTmrEMMA/myFASTmrEMMA.R")
+source("./compare_method_code/FASTmrEMMA/myFASTmrEMMA.R")
 
 #****************************************************************************************************#
-genotype <- read.csv("./MTML_code_data/data/real_data/gen_deal.csv",header=T)
+genotype <- read.csv("./data/real_data/gen_deal.csv",header=T)
 gen <- cbind(as.matrix(genotype[,1:3]),as.matrix(genotype[,4:202]))
 genRaw <- as.matrix(gen[,1:3])
 
-phenotype <- read.csv("./MTML_code_data/data/real_data/trait_f3.csv",header = T)
+phenotype <- read.csv("./data/real_data/trait_f3.csv",header = T)
 phenotype<-as.matrix(phenotype[,4:ncol(phenotype)])
 ### add population structure
 ph_vec_mat<-function(ph){
@@ -39,7 +39,7 @@ ph_vec_mat<-function(ph){
 }
 phen<-ph_vec_mat(phenotype)
 phen <- as.matrix(phen)
-str1<-read.table("./MTML_code_data/data/real_data/real_ph_f3.3.Q",header = F)
+str1<-read.table("./data/real_data/real_ph_f3.3.Q",header = F)
 ps<-as.matrix(str1)
 
 if (is.null(ps)==FALSE)
@@ -65,4 +65,4 @@ phen_ph<-as.matrix(phen_ph)
   
   result <- rbind(result1,result3)
   
-  write.csv(result,"./MTML_code_data/results/FASTmrEMMA_real_result.csv")
+  write.csv(result,"./results/FASTmrEMMA_real_result.csv")
