@@ -1,0 +1,15 @@
+Title: "MTML: An efficient multi-trait multi-locus GWAS method based on Cauchy combination test"
+ 
+Authors: Hongping Guo, Tong Li, Yao Shi and Xiao Wang.
+
+
+1. simulation experiment:
+   MTML：MTML-master.R
+   FASTmrEMMA: FASTmrEMMA_step.R
+   GEMMA and mvLMM: 1)format_conversion.R  2)GEMMA_mvLMM_step.sh  3)GEMMA_mvLMM_statistic.R
+  
+  
+2. real data analysis:
+   MTML：MTML_real.R
+   FASTmrEMMA: FFASTmrEMMA_real.R
+   GEMMA and mvLMM: 1)real_format_conversion.R  2)GEMMA_mvLMM_real.sh  3)GEMMA_mvLMM_real.R
