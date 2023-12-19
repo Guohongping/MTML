@@ -23,5 +23,5 @@ gemma <- data.frame(gemma)
 gemma[,"pvalue"] <- as.numeric(gemma[,"pvalue"])
 trait3 <- filter(gemma, pvalue < spvalue) 
 trait_result <- rbind(trait1,trait2,trait3)
-write.csv(trait_result,"./MTML_code_data/results/GEMMA_mvLMM_real_result.csv")
+write.csv(trait_result,"./results/GEMMA_mvLMM_real_result.csv")
 
