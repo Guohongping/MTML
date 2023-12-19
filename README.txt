@@ -44,7 +44,7 @@
  
  .MTML_code_data/data/simu_data/:
  
-		snps.csv
+	    snps.csv
 	    The dataset for genetic markers in Monte Carlo simulation experiments. 
 	    Totally include 4,000 markers, 2000 markers from each of the first two chromosomes (chr.1 and 2). 
 	    The positions range from 11,226,256 bp to 12,038,776 bp on chr.1, from 5,045,828 bp to 6,412,875 bp on chr.2.
@@ -89,16 +89,19 @@
 		The genotype dataset of Arabidopsis thaliana, it totally includes 199 samples, 5 chromosomes and 216,130 SNPs.
 		
 		gen_deal.csv	
-		Data preprocessing for the genotype data of Arabidopsis thaliana. The markers with missing samples and minor allele frequency (MAF) less than 0.01 are deleted, then 215,947 markers are remained for analysis.
+		Data preprocessing for the genotype data of Arabidopsis thaliana. The markers with missing samples and minor allele frequency (MAF) less than 0.01 are deleted, 
+                then 215,947 markers are remained for analysis.
 		
 		traits_3.csv
-		The three flowering-time related traits are days to flowering time under long days with vernalization (LDV), days to flowering time under short days with vernalization (SDV), and days to flowering time under long days with two weeks vernalization (2W).
+		The three flowering-time related traits are days to flowering time under long days with vernalization (LDV), days to flowering time under short days with 
+                vernalization (SDV), and days to flowering time under long days with two weeks vernalization (2W).
 		
 		trait_f3.csv
 		Data preprocessing for the phenotype datasets (three flowering-time related traits) of Arabidopsis thaliana.
 		
 		real_ph_f3.3.Q
-		Calculate the respective population structure matrix of three flowering-time related traits using ADMIXTURE software (http://software.genetics.ucla.edu/admixture/download.html).
+		Calculate the respective population structure matrix of three flowering-time related traits using ADMIXTURE software 
+                (http://software.genetics.ucla.edu/admixture/download.html).
 		
 		MTML_real.R
 		The main R script for Arabidopsis thaliana real data analysis using the proposed MTML method.
@@ -117,7 +120,7 @@
 			
 			FASTmrEMMA_real.R
 			The main R script for Arabidopsis thaliana real data analysis using FASTmrEMMA method.
-		    Enter R space, input "source("./MTML_code_data/compare_method_code/FASTmrEMMA/FASTmrEMMA_real.R")"
+		        Enter R space, input "source("./MTML_code_data/compare_method_code/FASTmrEMMA/FASTmrEMMA_real.R")"
 			
 		GEMMA_mvLMM/:
 		    
@@ -128,12 +131,13 @@
 			
 			GEMMA_mvLMM_step.sh
 			%%The first part of the code is to convert the data into the format required by GEMMA and mvLMM methods using PLINK software. 
-			  And PLINK software can be downloaded and installed through http://zzz.bwh.harvard.edu/plink/. Please refer to the website for specific instructions.
+			  PLINK software can be downloaded and installed through http://zzz.bwh.harvard.edu/plink/. Please refer to the website for specific instructions.
 			%%The second part of the code is to use GEMMA software to calculate the correlation coefficient matrix between phenotypes, and save the output file for further analysis.
-			  Download and install GEMMA software from https://github.com/genetics-statistics/GEMMA, Ref."Genome-wide efficient mixed-model analysis for association studies."
+			Download and install GEMMA software from https://github.com/genetics-statistics/GEMMA."
 			%%The third part of the code is GEMMA (a single-trait single-locus GWAS method based on linear mixed model) analysis using GEMMA software.
 			%%The forth part of the code is mvLMM (a multi-trait single-locus GWAS method based on multivariate linear mixed model) analysis using GEMMA software.
-			This code is a string of shell scripts for linux systems that can be run with " source GEMMA_mvLMM_step.sh". If this generates an error, copy it segment by segment and run it.
+			This code is a string of shell scripts for linux systems that can be run with " source GEMMA_mvLMM_step.sh". If this generates an error, copy it segment 
+                        by segment and run it.
 			
 			GEMMA_mvLMM_statistic.R
 			Calculate the statistical powers of four QTNs, average power and type I error rate using GEMMA and mvLMM in nine different scenarios.
@@ -150,13 +154,14 @@
  .MTML_code_data/results_figures_tables/:
         
 		figures/:
-		The figures of this manuscript are produced by the academic mapping software Origin, which can be downloaded and installed at:​ http://www.originsoft.cn/Single/Index/origin-download.
+		The figures of this manuscript are produced by the academic mapping software Origin, which can be downloaded and installed at:​ 
+                http://www.originsoft.cn/Single/Index/origin-download.
 		    
 			MTML_QTN_power.opju MTML_average_power.opju
 			This file is an origin mapping file, and you can modify it at will after downloading Origin.
 		    
 			Figure 1 .png  Figure 1 .tif  Figure 1 .eps
-		    Statistical powers of MTML, GEMMA, FASTmrEMMA and mvLMM methods for the four QTNs in three simulation scenarios.
+		        Statistical powers of MTML, GEMMA, FASTmrEMMA and mvLMM methods for the four QTNs in three simulation scenarios.
 			
 			Figure 2 .png  Figure 2 .tif  Figure 2 .eps
 			Average powers of MTML, GEMMA, FASTmrEMMA and mvLMM methods in three simulation scenarios (d = 5).
@@ -175,7 +180,7 @@
 			QTN statistic power.xlsx
 			Correspond to  Figure 1. Statistical powers of MTML, GEMMA, FASTmrEMMA and mvLMM methods for the four QTNs in three simulation scenarios.
          
-		    power_type 1 error .xlsx
+		        power_type 1 error .xlsx
 			Correspond to Figure 2, Figure 3, Figure 4, Figure 5.
 			
 			Arabidopsis genes.xlsx
