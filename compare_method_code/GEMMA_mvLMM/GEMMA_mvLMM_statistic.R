@@ -1,12 +1,12 @@
 #***************************************** GEMMA: power and type I error *************************************
 
-source("./MTML_code_data/code/statistic.R")
+source("./code/statistic.R")
 N <- 10
 snp <- 4000
 spvalue <- 0.05
 gemma <- read.table("./output/gemma1_21.assoc.txt")
 trait_info <- matrix(c(2,5,10,10,5,2),3,2)
-genotype <- read.csv("./MTML_code_data/data/simu_data/snps.csv",header=T)
+genotype <- read.csv("./data/simu_data/snps.csv",header=T)
 gen <- as.matrix(genotype[,1:3])
 	
 GEMMA_perform <- NULL
@@ -33,14 +33,14 @@ for (k in 1:nrow(trait_info)){
     GEMMA_perform <- rbind(GEMMA_perform,statis)
   }
 }
-write.csv(GEMMA_perform,"./MTML_code_data/results/GEMMA_result.csv")
+write.csv(GEMMA_perform,"./results/GEMMA_result.csv")
 
 #*************************************************** mvLMM: power and type I error **************************************
 snp <- 4000
 spvalue <- 0.05
 mv <- read.table("./output/mvlmm1_21.assoc.txt")
 trait_info <- matrix(c(2,5,10,10,5,2),3,2)
-genotype <- read.csv("./MTML_code_data/data/simu_data/snps.csv",header=T)
+genotype <- read.csv("./data/simu_data/snps.csv",header=T)
 gen <- as.matrix(genotype[,1:3])
 	
 mvLMM_perform <- NULL
@@ -69,4 +69,4 @@ for (k in 1:nrow(trait_info)){
   }
 }
 
-write.csv(mvLMM_perform,"./MTML_code_data/results/mvLMM_result.csv")
+write.csv(mvLMM_perform,"./results/mvLMM_result.csv")
