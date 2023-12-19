@@ -8,8 +8,8 @@ library(iterators)
 library(doParallel)
 library(bigmemory)
 
-source("./MTML_code_data/compare_method_code/FASTmrEMMA/myFASTmrEMMA.R")
-source("./MTML_code_data/code/statistic.R")
+source("./compare_method_code/FASTmrEMMA/myFASTmrEMMA.R")
+source("./code/statistic.R")
 
 kk <- NULL                
 psmatrix <- NULL          
@@ -22,7 +22,7 @@ N <- 10
 snp <- 4000
 spvalue <- 0.0002
 
-genotype <- read.csv("./MTML_code_data/data/simu_data/snps.csv",header=T)
+genotype <- read.csv("./data/simu_data/snps.csv",header=T)
 gen <- cbind(as.matrix(genotype[,1:3]),as.matrix(genotype[,4:202]))
 genRaw <- as.matrix(gen[,1:3])
 trait_info <- matrix(c(2,5,10,10,4,2),3,2)
@@ -31,7 +31,7 @@ FASTmrEMMA_perform <- NULL
 for (k in 1:nrow(trait_info)){
   for (r in 1:3){
     trait_k <- trait_info[k,1]
-    fname <- paste("./MTML_code_data/data/simu_data/simu_phenotype/Y",r,"_",trait_k,".csv",sep="")
+    fname <- paste("./data/simu_data/simu_phenotype/Y",r,"_",trait_k,".csv",sep="")
     phenotype <- read.csv(fname,header = T)
     phenotype <- as.matrix(phenotype[,-1])
     
@@ -60,7 +60,7 @@ for (k in 1:nrow(trait_info)){
 	FASTmrEMMA_perform <- rbind(FASTmrEMMA_perform,statis)
   }
 }
-write.csv(FASTmrEMMA_perform,"./MTML_code_data/results/FASTmrEMMA_result.csv")
+write.csv(FASTmrEMMA_perform,"./results/FASTmrEMMA_result.csv")
 
 
 
