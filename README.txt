@@ -42,7 +42,7 @@
  This folder in MTML contains the following code and data files that can be used to reproduce all process of the manuscript.
  The explanation is as follows:
  
- .MTML_code_data/data/simu_data/:
+ ./data/simu_data/:
  
 	    snps.csv
 	    The dataset for genetic markers in Monte Carlo simulation experiments. 
@@ -59,7 +59,7 @@
 	    The dataset files for phenotypes with three different simulation settings.
 	    For example "Y1_2", "1" represents the first Monte Carlo simulation experiment, and "2" represents the scenario of two traits.
 	   
- .MTML_code_data/code/:
+ ./code/:
 
 		single_trait.R
 		R code for single-trait analysis by EMMAX method.
@@ -81,9 +81,9 @@
 		The script will run successfully by sourcing the above code files (simulate.R, single_trait.R, ridge.R, cauchyComb.R, statistic.R, MTML.R). 
 		In the output file, it contains the results in nine different scenarios (i.e., three Monte Carlo simulation experiments under three different traits (2,5,10)). 
 		To view the intermediate results, simply add the file "write. csv" at the end of each step.
-		Enter R space, input "source("./MTML_code_data/code/MTML-master.R")" 
+		Enter R space, input "source("./code/MTML-master.R")" 
 		
- .MTML_code_data/data/real_data/:	
+ ./data/real_data/:	
         
 		snps_all.csv
 		The genotype dataset of Arabidopsis thaliana, it totally includes 199 samples, 5 chromosomes and 216,130 SNPs.
@@ -105,9 +105,9 @@
 		
 		MTML_real.R
 		The main R script for Arabidopsis thaliana real data analysis using the proposed MTML method.
-		Enter R space, input "source("./MTML_code_data/data/real_data/MTML_real.R")"
+		Enter R space, input "source("./data/real_data/MTML_real.R")"
 		
- .MTML_code_data/compare_method_code/:
+ ./compare_method_code/:
         
 		FASTmrEMMA/:
 		
@@ -116,18 +116,18 @@
 			
 			FASTmrEMMA_step.R
 			The main R script of FASTmrEMMA method.
-			Enter R space, input "source("./MTML_code_data/compare_method_code/FASTmrEMMA/FASTmrEMMA_step.R")"
+			Enter R space, input "source("./compare_method_code/FASTmrEMMA/FASTmrEMMA_step.R")"
 			
 			FASTmrEMMA_real.R
 			The main R script for Arabidopsis thaliana real data analysis using FASTmrEMMA method.
-		        Enter R space, input "source("./MTML_code_data/compare_method_code/FASTmrEMMA/FASTmrEMMA_real.R")"
+		        Enter R space, input "source("./compare_method_code/FASTmrEMMA/FASTmrEMMA_real.R")"
 			
 		GEMMA_mvLMM/:
 		    
 			plink.map.R  plink.ped.R  plink.ph.R format_conversion.R
 			Convert genotype data into binary format functions which are required in PLINK software, then save the output files.
 			The output files are requried as the inputs in both single-trait single-locus GWAS method GEMMA and multi-trait single-locus GWAS method mvLMM.
-			Enter R space, input "source("./MTML_code_data/compare_method_code/GEMMA_mvLMM/format_conversion.R")"
+			Enter R space, input "source("./compare_method_code/GEMMA_mvLMM/format_conversion.R")"
 			
 			GEMMA_mvLMM_step.sh
 			%%The first part of the code is to convert the data into the format required by GEMMA and mvLMM methods using PLINK software. 
@@ -151,7 +151,7 @@
 			GEMMA_mvLMM_real.R
 			Show the results of GEMMA and mvLMM in Arabidopsis thaliana real datasets.
 
- .MTML_code_data/results_figures_tables/:
+ ./results_figures_tables/:
         
 		figures/:
 		The figures of this manuscript are produced by the academic mapping software Origin, which can be downloaded and installed at:​ 
