@@ -191,7 +191,7 @@
 			QTN statistic power.xlsx
 			Correspond to  Figure 1. Statistical powers of MTML, GEMMA, FASTmrEMMA and mvLMM methods for the four QTNs in three simulation scenarios.
          
-		        power_type 1 error .xlsx
+		        power_type 1 error.xlsx
 			Correspond to Figure 2, Figure 3, Figure 4, Figure 5.
 			
 			Arabidopsis genes.xlsx
