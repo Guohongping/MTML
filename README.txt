@@ -39,10 +39,9 @@
  [9] bigmemory_4.6.1
  
   Notice: (1)there is a documentation called “run_order.txt” in current directory to illustrate the file running order.
-         (2)there is a documentation called “para_simu.txt” in current directory to illustrate the simulation hyperparameters.
+          (2)there is a documentation called “para_simu.txt” in current directory to illustrate the simulation hyperparameters.
 
- This folder in MTML contains the following code and data files that can be used to reproduce all process of the manuscript.
- The explanation is as follows:
+ MTML contains the following code and data files which are required to reproduce the results of the manuscript.
  
  ./data/simu_data/:
  
