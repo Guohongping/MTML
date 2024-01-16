@@ -86,7 +86,7 @@
 		
  ./data/real_data/:	
         
-               gen_deal.csv (This file is larger than 25MB, it can not be uploaded directly in Github, so we compress it in gen_deal.zip, please unzip it.)
+                gen_deal.csv (This file is larger than 25MB, it can not be uploaded directly in Github, so we compress it in gen_deal.zip, please unzip it.)
 		Data preprocessing for the genotype data of Arabidopsis thaliana. The markers with missing samples and minor allele frequency (MAF) less than 0.01 are deleted, then 215,947 markers are remained for analysis.
 		
 		trait_f3.csv (This file is larger than 25MB, it can not be uploaded directly in Github, so we compress it in trait_f3.zip, please unzip it.)
@@ -118,21 +118,38 @@
 			
 		GEMMA_mvLMM/:
 		    
-			plink.map.R  plink.ped.R  plink.ph.R format_conversion.R
-			Convert genotype data into binary format functions which are required in PLINK software, then save the output files.
-			The output files are requried as the inputs in both single-trait single-locus GWAS method GEMMA and multi-trait single-locus GWAS method mvLMM.
+                        plink.map.R   plink.ped.R
+			They are two functions to convert the genotype data into two specified formats, *.ped and *.map, respectively. 
+			
+			plink.ph.R
+			It is a funtion to convert the phenotype data into specified format (*.txt). 
+			
+			format_conversion.R
+			It is the code to obtain the output files (*.ped and *.map), which are requried as the inputs in both GEMMA and mvLMM.
+			
 			Enter R space, input "source("./compare_method_code/GEMMA_mvLMM/format_conversion.R")"
 			
 			GEMMA_mvLMM_step.sh
-			%%The first part of the code is to convert the data into the format required by GEMMA and mvLMM methods using PLINK software. 
-			  PLINK software can be downloaded and installed through http://zzz.bwh.harvard.edu/plink/. Please refer to the website for specific instructions.
-			%%The second part of the code is to use GEMMA software to calculate the correlation coefficient matrix between phenotypes, and save the output file for further analysis.
-			Download and install GEMMA software from https://github.com/genetics-statistics/GEMMA."
-			%%The third part of the code is GEMMA (a single-trait single-locus GWAS method based on linear mixed model) analysis using GEMMA software.
-			%%The forth part of the code is mvLMM (a multi-trait single-locus GWAS method based on multivariate linear mixed model) analysis using GEMMA software.
-			This code is a string of shell scripts for linux systems that can be run with " source GEMMA_mvLMM_step.sh". If this generates an error, copy it segment 
-                        by segment and run it.
+			There are four steps in this file, please follow the instructions step-by-step.
 			
+			%%The first step: use PLINK software to convert the files (*.ped and *.map) to binary formats (*.bed, *.bim, and *.fam), which are required in GEMMA and mvLMM.
+			
+			Notice: PLINK (v1.90b6.10 64-bit (17 Jun 2019)) software can be downloaded from http://www.cog-genomics.org/plink/1.9/, 
+			        the installation instruction can be seen in http://zzz.bwh.harvard.edu/plink.
+					After installing PLINK 1.9, please copy the executable file to the current path.
+					
+			%%The second step: use GEMMA software to calculate the correlation coefficient matrix between phenotypes, and save the output file for further analysis.
+			
+			Notice: GEMMA (0.98.5 (2021-08-25)) software can be downloaded from https://github.com/genetics-statistics/GEMMA,
+			        and the installation instruction can be also seen in this link.
+					After installing GEMMA 0.98.5, please copy the executable file to the current path.
+					
+			%%The third step: perform single-trait single-locus GWAS analysis using GEMMA software.
+			
+			%%The forth step: perform mvLMM analysis (i.e., a multi-trait single-locus GWAS method based on multivariate linear mixed model), which can be also implemented by GEMMA software.
+			
+			The above four steps can be conducted via "source GEMMA_mvLMM_step.sh". If there is something wrong, please run the four steps separately.
+						
 			GEMMA_mvLMM_statistic.R
 			Calculate the statistical powers of four QTNs, average power and type I error rate using GEMMA and mvLMM in nine different scenarios.
 			
