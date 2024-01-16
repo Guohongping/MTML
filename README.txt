@@ -56,8 +56,8 @@
 	    simulate.R
 	    R code for generating phenotype datasets using genotype data in three Monte Carlo simulation experiments. 
 	    
-	    simu phenotype/:
-	    The dataset files for phenotypes with three different simulation settings.
+	    simu_phenotype/:
+	    The files for phenotypes under three different simulation settings.
 	    For example "Y1_2", "1" represents the first Monte Carlo simulation experiment, and "2" represents the scenario of two traits.
 	   
  ./code/:
@@ -86,12 +86,8 @@
 		
  ./data/real_data/:	
         
-		snps_all.csv
-		The genotype dataset of Arabidopsis thaliana, it totally includes 199 samples, 5 chromosomes and 216,130 SNPs.
-		
-		gen_deal.csv	
-		Data preprocessing for the genotype data of Arabidopsis thaliana. The markers with missing samples and minor allele frequency (MAF) less than 0.01 are deleted, 
-                then 215,947 markers are remained for analysis.
+               gen_deal.csv (This file is larger than 25MB, it can not be uploaded directly in Github, so we compress it in gen_deal.zip, please unzip it.)
+		Data preprocessing for the genotype data of Arabidopsis thaliana. The markers with missing samples and minor allele frequency (MAF) less than 0.01 are deleted, then 215,947 markers are remained for analysis.
 		
 		traits_3.csv
 		The three flowering-time related traits are days to flowering time under long days with vernalization (LDV), days to flowering time under short days with 
