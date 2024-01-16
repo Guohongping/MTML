@@ -89,12 +89,9 @@
                gen_deal.csv (This file is larger than 25MB, it can not be uploaded directly in Github, so we compress it in gen_deal.zip, please unzip it.)
 		Data preprocessing for the genotype data of Arabidopsis thaliana. The markers with missing samples and minor allele frequency (MAF) less than 0.01 are deleted, then 215,947 markers are remained for analysis.
 		
-		traits_3.csv
-		The three flowering-time related traits are days to flowering time under long days with vernalization (LDV), days to flowering time under short days with 
-                vernalization (SDV), and days to flowering time under long days with two weeks vernalization (2W).
-		
-		trait_f3.csv
-		Data preprocessing for the phenotype datasets (three flowering-time related traits) of Arabidopsis thaliana.
+		trait_f3.csv (This file is larger than 25MB, it can not be uploaded directly in Github, so we compress it in trait_f3.zip, please unzip it.)
+		Data preprocessing for the phenotype datasets (three flowering-time related traits) of Arabidopsis thaliana. The three flowering-time related traits are:
+		days to flowering time under long days with vernalization (LDV), days to flowering time under short days with vernalization (SDV), and days to flowering time under long days with two weeks vernalization (2W).
 		
 		real_ph_f3.3.Q
 		Calculate the respective population structure matrix of three flowering-time related traits using ADMIXTURE software 
