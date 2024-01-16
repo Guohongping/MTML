@@ -1,17 +1,17 @@
 
 
-source("./MTML_code_data/compare_method_code/GEMMA_mvLMM/plink.map.R")
-source("./MTML_code_data/compare_method_code/GEMMA_mvLMM/plink.ped.R")
-source("./MTML_code_data/compare_method_code/GEMMA_mvLMM/plink.ph.R")
+source("./compare_method_code/GEMMA_mvLMM/plink.map.R")
+source("./compare_method_code/GEMMA_mvLMM/plink.ped.R")
+source("./compare_method_code/GEMMA_mvLMM/plink.ph.R")
 
-genotype <- read.csv("./MTML_code_data/data/real_data/gen_deal.csv",header=T)
+genotype <- read.csv("./data/real_data/gen_deal.csv",header=T)
 genotype <- as.matrix(genotype[,4:202])
 genotype[genotype==0] <- "11"
  genotype[genotype==1] <- "12"
  genotype[genotype==2] <- "22"
  gene <- genotype
  gene <- t(gene)
-phenotype <- read.csv("./MTML_code_data/data/real_data/trait_f3.csv",header = T)
+phenotype <- read.csv("./data/real_data/trait_f3.csv",header = T)
 phenotype<-as.matrix(phenotype[,4:ncol(phenotype)])
 trait_k <- 3
 ### add population structure
@@ -24,7 +24,7 @@ ph_vec_mat<-function(ph){
 }
 phen<-ph_vec_mat(phenotype)
 phen <- as.matrix(phen)
-str1<-read.table("./MTML_code_data/data/real_data/real_ph_f3.3.Q",header = F)
+str1<-read.table("./data/real_data/real_ph_f3.3.Q",header = F)
 ps<-as.matrix(str1)
 
 if (is.null(ps)==FALSE)
@@ -43,9 +43,9 @@ n <- nrow(gene)
 q <- ncol(gene) 
 p <- ncol(phen)
 mapph <- plink.map(q)
-write.table(mapph,"./MTML_code_data/data/real_data/trait_f3.map",row.names=F,col.names=F,quote=F)
+write.table(mapph,"./data/real_data/trait_f3.map",row.names=F,col.names=F,quote=F)
 peddh <- plink.ped(n,phen,gene,p,q)
-write.table(peddh,"./MTML_code_data/data/real_data/trait_f3.ped",row.names=F,col.names=F,quote=F)
+write.table(peddh,"./data/real_data/trait_f3.ped",row.names=F,col.names=F,quote=F)
 phh <- plink.ph(n,phen,p)
-write.table(phh,"./MTML_code_data/data/real_data/trait_f3.txt",row.names=F,col.names=F,quote=F)
+write.table(phh,"./data/real_data/trait_f3.txt",row.names=F,col.names=F,quote=F)
 
