@@ -171,31 +171,32 @@
 			MTML_QTN_power.opju MTML_average_power.opju
 			This file is an origin mapping file, and you can modify it at will after downloading Origin.
 		    
-			Figure 1 .png  Figure 1 .tif  Figure 1 .eps
+			Figure1.png  Figure1.tif  Figure1.eps
 		        Statistical powers of MTML, GEMMA, FASTmrEMMA and mvLMM methods for the four QTNs in three simulation scenarios.
 			
-			Figure 2 .png  Figure 2 .tif  Figure 2 .eps
+			Figure2.png  Figure2.tif  Figure2.eps
 			Average powers of MTML, GEMMA, FASTmrEMMA and mvLMM methods in three simulation scenarios (d = 5).
 			
-			Figure 3 .png  Figure 3 .tif  Figure 3 .eps
+			Figure3.png  Figure3.tif  Figure3.eps
 			Average powers of MTML in various numbers of traits (d = 2, 5, 10) in three simulation scenarios.
 			
-			Figure 4 .png  Figure 4 .tif  Figure 4 .eps
+			Figure4.png  Figure4.tif  Figure4.eps
 			Type 1 error rates (0.01%) of MTML, GEMMA, FASTmrEMMA and mvLMM methods in three simulation scenarios (d = 5).
 			
-			Figure 5 .png  Figure 5 .tif  Figure 5 .eps
+			Figure5.png  Figure5.tif  Figure5.eps
 			Type 1 error rates (0.01%) of MTML in various numbers of traits (d = 2, 5, 10) in three simulation scenarios.
 			
 		tables/:
 		    
-			QTN statistic power.xlsx
-			Correspond to  Figure 1. Statistical powers of MTML, GEMMA, FASTmrEMMA and mvLMM methods for the four QTNs in three simulation scenarios.
+			QTN_statistic_power.xlsx
+			Correspond to  Figure1. Statistical powers of MTML, GEMMA, FASTmrEMMA and mvLMM methods for the four QTNs in three simulation scenarios.
          
-		        power_type 1 error.xlsx
-			Correspond to Figure 2, Figure 3, Figure 4, Figure 5.
+		        power_type1_error.xlsx
+			Correspond to Figure2, Figure3, Figure4, Figure5.
 			
-			Arabidopsis genes.xlsx
+			Arabidopsis_genes.xlsx
 			The comprehensive overview of the genes identified by MTML in three Arabidopsis thaliana flowering-time related traits (LDV, SDV and 2W).
+			
 			
 			
 ​
