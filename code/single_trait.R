@@ -7,7 +7,7 @@
 #' @param CLO is the the number of computer cores
 
 single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
-
+  
   ## The function to calculate the kinship matrix
   if (is.null(kk)) {
     emma.kinship <- function(snps, method = "additive", use = "all") {
