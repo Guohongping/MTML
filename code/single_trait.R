@@ -9,7 +9,6 @@
 single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
 
   ## The function to calculate the kinship matrix
-
   if (is.null(kk)) {
     emma.kinship <- function(snps, method = "additive", use = "all") {
       n0 <- sum(snps == 0, na.rm = TRUE)
@@ -55,7 +54,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     }
 
     ## Check the input data to ensure that the codes run smoothly
-
     if (is.null(gen) == TRUE) {
       warning("Please input correct genotype dataset !")
     } else {
@@ -65,23 +63,17 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       gc()
     }
   }
-
-
   if (is.null(psmatrix)) {
     flagps <- 1
   } else {
     flagps <- 0
   }
-
-
   if (is.null(svpal) == TRUE) {
     warning("Please set parameter!")
   }
-
   if ((svpal < 0) || (svpal > 1)) {
     warning("Please input critical P-value between 0 and 1!")
   }
-
   if (exists("gen") == FALSE) {
     warning("Please input correct genotype dataset !")
   }
@@ -94,7 +86,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
   if ((exists("gen") == TRUE) && (exists("phe") == TRUE) && (ncol(gen) != (nrow(phe) + 3))) {
     warning("Sample sizes between genotypic and phenotypic datasets do not equal !")
   }
-
   if ((exists("gen") == TRUE) && (exists("phe") == TRUE) && (exists("kk") == TRUE) && ((ncol(gen) == (nrow(phe) + 3))) && (svpal >= 0) && (svpal <= 1)) {
     parmsShow <- NULL
     wan <- NULL
@@ -103,19 +94,16 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     mannewp <- NULL
 
     ## The function to calculate the probability density of multiple normal distribution
-
     multinormal <- function(y, mean, sigma) {
       pdf_value <- (1 / sqrt(2 * pi * sigma)) * exp(-(y - mean) * (y - mean) / (2 * sigma))
       return(pdf_value)
     }
 
     ## The function to calculate the LOD value of likelihood ratio test
-
     likelihood <- function(xxn, xxx, yn, bbo) {
       nq <- ncol(xxx)
       ns <- nrow(yn)
       at1 <- 0
-
       if (is.null(bbo) == TRUE) {
         ww1 <- 1:ncol(xxx)
         ww1 <- as.matrix(ww1)
@@ -156,7 +144,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     }
 
     ## The function for eigenvalue decomposition without covariate matrix X
-
     emma.eigen.L <- function(Z, K, complete = TRUE) {
       if (is.null(Z)) {
         return(emma.eigen.L.wo.Z(K))
@@ -181,7 +168,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     }
 
     ## The function for eigenvalue decomposition with covariate matrix X
-
     emma.eigen.R <- function(Z, K, X, complete = TRUE) {
       if (ncol(X) == 0) {
         return(emma.eigen.L(Z, K))
@@ -200,7 +186,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       stopifnot(!is.complex(eig$values))
       return(list(values = eig$values[1:(n - q)] - 1, vectors = eig$vectors[, 1:(n - q)]))
     }
-
     emma.eigen.R.w.Z <- function(Z, K, X, complete = TRUE) {
       if (complete == FALSE) {
         vids <- colSums(Z) > 0
@@ -210,7 +195,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       n <- nrow(Z)
       t <- ncol(Z)
       q <- ncol(X)
-
       SZ <- Z - X %*% solve(crossprod(X, X)) %*% crossprod(X, Z)
       eig <- eigen(K %*% crossprod(Z, SZ), symmetric = FALSE)
       if (is.complex(eig$values)) {
@@ -226,22 +210,18 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       ))
     }
 
-
     ## The functions to calculate the restricted log likelihood estimate (and derivative ) under null hypothesis and alternative hypothesis
-
     emma.delta.REML.LL.wo.Z <- function(logdelta, lambda, etas) {
       nq <- length(etas)
       delta <- exp(logdelta)
       return(0.5 * (nq * (log(nq / (2 * pi)) - 1 - log(sum(etas * etas / (delta * lambda + 1)))) - sum(log(delta * lambda + 1))))
     }
-
     emma.delta.REML.LL.w.Z <- function(logdelta, lambda, etas.1, n, t, etas.2.sq) {
       tq <- length(etas.1)
       nq <- n - t + tq
       delta <- exp(logdelta)
       return(0.5 * (nq * (log(nq / (2 * pi)) - 1 - log(sum(etas.1 * etas.1 / (delta * lambda + 1)) + etas.2.sq)) - sum(log(delta * lambda + 1))))
     }
-
     emma.delta.REML.dLL.wo.Z <- function(logdelta, lambda, etas) {
       nq <- length(etas)
       delta <- exp(logdelta)
@@ -249,7 +229,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       ldelta <- delta * lambda + 1
       return(0.5 * (nq * sum(etasq * lambda / (ldelta * ldelta)) / sum(etasq / ldelta) - sum(lambda / ldelta)))
     }
-
     emma.delta.REML.dLL.w.Z <- function(logdelta, lambda, etas.1, n, t1, etas.2.sq) {
       t <- t1
       tq <- length(etas.1)
@@ -261,7 +240,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     }
 
     ## The function to estimate the restricted  maximum likelihood value
-
     emma.REMLE <- function(y, X, K, Z = NULL, ngrids = 100, llim = -10, ulim = 10,
                            esp = 1e-10, eig.L = NULL, eig.R = NULL) {
       n <- length(y)
@@ -273,7 +251,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
         warning("X is singular")
         return(list(REML = 0, delta = 0, ve = 0, vg = 0))
       }
-
       if (is.null(Z)) {
         if (is.null(eig.R)) {
           eig.R <- emma.eigen.R.wo.Z(K, X)
@@ -296,7 +273,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
           optlogdelta <- append(optlogdelta, ulim)
           optLL <- append(optLL, emma.delta.REML.LL.wo.Z(ulim, eig.R$values, etas))
         }
-
         for (i in 1:(m - 1))
         {
           if ((dLL[i] * dLL[i + 1] < 0 - esp * esp) && (dLL[i] > 0) && (dLL[i + 1] < 0)) {
@@ -330,7 +306,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
           optlogdelta <- append(optlogdelta, ulim)
           optLL <- append(optLL, emma.delta.REML.LL.w.Z(ulim, eig.R$values, etas.1, n, t, etas.2.sq))
         }
-
         for (i in 1:(m - 1))
         {
           if ((dLL[i] * dLL[i + 1] < 0 - esp * esp) && (dLL[i] > 0) && (dLL[i + 1] < 0)) {
@@ -351,7 +326,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       maxvg <- maxve * maxdelta
       return(list(REML = maxLL, delta = maxdelta, ve = maxve, vg = maxvg))
     }
-
     emma.maineffects.B <- function(Z = NULL, K, deltahat.g, complete = TRUE) {
       if (is.null(Z)) {
         return(emma.maineffects.B.Zo(K, deltahat.g))
@@ -359,8 +333,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
         return(emma.maineffects.B.Z(Z, K, deltahat.g, complete))
       }
     }
-
-
     emma.maineffects.B.Zo <- function(K, deltahat.g) {
       t <- nrow(K)
       stopifnot(ncol(K) == t)
@@ -374,7 +346,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       C <- Q %*% A %*% t(Q)
       return(list(mC = C, Q = Q, A = A))
     }
-
     emma.maineffects.B.Z <- function(Z, K, deltahat.g, complete = TRUE) {
       if (complete == FALSE) {
         vids <- colSums(Z) > 0
@@ -392,7 +363,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       C <- Q %*% A %*% t(Q)
       return(list(mC = C, Q = Q, A = A, complete = TRUE))
     }
-
     emma.REMLE0.c <- function(Y_c, W_c) {
       n <- length(Y_c)
       stopifnot(nrow(W_c) == n)
@@ -405,7 +375,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       LL <- 0.5 * v * (log(v / (2 * pi)) - 1 - log(sum(etas * etas)))
       return(list(REML = LL))
     }
-
     replaceNaN <- function(LL) {
       index <- (LL == "NaN")
       if (length(index) > 0) theMin <- min(LL[!index])
@@ -413,7 +382,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       LL[index] <- theMin
       return(LL)
     }
-
     emma.eigen.L.c <- function(Z, K, complete = TRUE) {
       if (is.null(Z)) {
         return(emma.eigen.L.wo.Z.c(K))
@@ -426,7 +394,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       eig <- eigen(K, symmetric = TRUE)
       return(list(values = eig$values, vectors = eig$vectors))
     } # don't run
-
     ## likelihood
     emma.eigen.L.w.Z.c <- function(Z, K, complete = TRUE) {
       if (complete == FALSE) { # don't run
@@ -438,7 +405,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       # symmetric=FALSE change to TRUE,EISPACK=TRUE  20140827
       return(list(values = eig$values, vectors = qr.Q(qr(Z %*% eig$vectors), complete = TRUE)))
     }
-
     ### restricted likelihood
     emma.eigen.R.c <- function(Z, K, X, complete = TRUE) {
       if (ncol(X) == 0) {
@@ -463,7 +429,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       stopifnot(!is.complex(eig$values))
       return(list(values = eig$values[1:(n - q)] - 1, vectors = eig$vectors[, 1:(n - q)]))
     }
-
     ### restricted likelihood
     emma.eigen.R.w.Z.c <- function(Z, K, X, complete = TRUE) {
       if (complete == FALSE) {
@@ -478,7 +443,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       } else {
         q <- 1
       }
-
       SZ <- Z - X %*% solve(crossprod(X, X)) %*% crossprod(X, Z)
       eig <- eigen(K %*% crossprod(Z, SZ), symmetric = FALSE)
       if (is.complex(eig$values)) {
@@ -493,13 +457,11 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
         )[, c(1:t, (t + q + 1):n)]
       ))
     }
-
     emma.delta.REML.LL.w.Z.c <- function(logdelta, lambda, etas.1, n, q, etas.2.sq) {
       nq <- n - q
       delta <- exp(logdelta)
       return(0.5 * (nq * (log(nq / (2 * pi)) - 1 - log(sum(etas.1 * etas.1 / (delta * lambda + 1)) + etas.2.sq)) - sum(log(delta * lambda + 1))))
     }
-
     emma.delta.REML.dLL.w.Z.c <- function(logdelta, lambda, etas.1, n, q1, etas.2.sq) {
       q <- q1
       nq <- n - q
@@ -508,8 +470,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       ldelta <- delta * lambda + 1
       return(0.5 * (nq * sum(etasq * lambda / (ldelta * ldelta)) / (sum(etasq / ldelta) + etas.2.sq) - sum(lambda / ldelta)))
     }
-
-
     emma.REMLE.c <- function(y, X, K = 1, Z = NULL, ngrids = 100, llim = -10, ulim = 10,
                              esp = 1e-10, eig.L = NULL, eig.R = NULL) {
       if (is.matrix(y)) {
@@ -517,23 +477,18 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       } else {
         n <- length(y)
       }
-
       t <- 1
       if (is.matrix(X)) {
         q <- ncol(X)
       } else {
         q <- 1
       }
-
       stopifnot(K == 1)
       stopifnot(nrow(X) == n)
-
       if (det(crossprod(X, X)) == 0) {
         warning("X is singular")
         return(list(REML = 0, delta = 0, ve = 0, vg = 0))
       }
-
-
       if (is.null(Z)) {
         if (is.null(eig.R)) {
           eig.R <- emma.eigen.R.wo.Z.c(K, X)
@@ -545,7 +500,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
         Lambdas.1 <- matrix(eig.R$values, n - q, m)
         Lambdas <- Lambdas.1 * matrix(delta, n - q, m, byrow = TRUE) + 1
         Etasq <- matrix(etas * etas, n - q, m)
-
         dLL <- 0.5 * delta * ((n - q) * colSums(Etasq * Lambdas.1 / (Lambdas * Lambdas)) / colSums(Etasq / Lambdas) - colSums(Lambdas.1 / Lambdas))
         optlogdelta <- vector(length = 0)
         optLL <- vector(length = 0)
@@ -557,7 +511,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
           optlogdelta <- append(optlogdelta, ulim)
           optLL <- append(optLL, emma.delta.REML.LL.wo.Z(ulim, eig.R$values, etas))
         }
-
         for (i in 1:(m - 1))
         {
           if ((dLL[i] * dLL[i + 1] < 0 - esp * esp) && (dLL[i] > 0) && (dLL[i + 1] < 0)) {
@@ -580,7 +533,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
         Lambdas.1 <- matrix(eig.R$values, t, m)
         Lambdas <- Lambdas.1 * matrix(delta, t, m, byrow = TRUE) + 1
         Etasq <- matrix(etas.1 * etas.1, t, m)
-
         dLL <- 0.5 * delta * ((n - q) * colSums(Etasq * Lambdas.1 / (Lambdas * Lambdas)) / (colSums(Etasq / Lambdas) + etas.2.sq) - colSums(Lambdas.1 / Lambdas))
         optlogdelta <- vector(length = 0)
         optLL <- vector(length = 0)
@@ -592,7 +544,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
           optlogdelta <- append(optlogdelta, ulim)
           optLL <- append(optLL, emma.delta.REML.LL.w.Z.c(ulim, eig.R$values, etas.1, n, q, etas.2.sq))
         }
-
         for (i in 1:(m - 1))
         {
           if ((dLL[i] * dLL[i + 1] < 0 - esp * esp) && (dLL[i] > 0) && (dLL[i + 1] < 0)) {
@@ -613,7 +564,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       maxvg <- maxve * maxdelta
       return(list(REML = maxLL, delta = maxdelta, ve = maxve, vg = maxvg, U_R = eig.R$vectors, etas.1 = etas.1, etas = etas, lambda = eig.R$values))
     }
-
     yraw <- matrix(phe[, 1], , 1)
     xnames <- gen[, 2:3]
     snp1 <- deepcopy(gen, 4:ncol(gen))
@@ -630,7 +580,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     Y <- yraw
     K <- matrix(kk, nrow = dim(kk)[1])
     W0 <- matrix(1, n, 1)
-
     if (is.null(psmatrix) == FALSE) {
       W1 <- psmatrix
       W <- cbind(W0, W1)
@@ -638,10 +587,8 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     if (is.null(psmatrix) == TRUE) {
       W <- W0
     }
-
     rm(kk)
     gc()
-
     maf.fun <- function(snp) {
       leng <- length(snp)
       id.1 <- length(which(snp == 1))
@@ -655,20 +602,12 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       maf.min <- min(ma1, ma2)
       return(list(maf.1, maf.0, maf.0.5, maf.min))
     }
-
-
-
     remle1 <- emma.REMLE(Y, W, K, Z = NULL, ngrids = 100, llim = -10, ulim = 10, esp = 1e-10, eig.L = NULL, eig.R = NULL)
-   
-
     remle1.deltahat.g <- remle1$delta
     remle1.B1 <- emma.maineffects.B(Z = NULL, K, remle1.deltahat.g)
     C2 <- remle1.B1$mC
-
     rm(remle1.B1)
     gc()
-
-   
     ys <- Y
     xs <- mydata[, ]
     K <- 1
@@ -678,12 +617,10 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     llim <- -10
     ulim <- 10
     esp <- 1e-10
-
     stopifnot(K == 1)
     ys <- Z %*% ys
     xs <- Z %*% xs
     X0 <- Z %*% X0
-
     ys <- as.matrix(ys)
     xs <- as.matrix(xs)
     X0 <- as.matrix(X0)
@@ -692,7 +629,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     t <- ncol(xs)
     q0 <- ncol(X0)
     MLE0 <- emma.REMLE0.c(ys, X0)
-
     ML1s <- vector(length = t)
     ML0s <- vector(length = t)
     vgs <- vector(length = t)
@@ -703,7 +639,6 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     d <- vector(length = t)
     stats <- vector(length = t)
     ps <- vector(length = t)
-
     cl.cores <- detectCores()
     if ((cl.cores <= 2) || (is.null(CLO) == FALSE)) {
       cl.cores <- 1
@@ -714,17 +649,14 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
         cl.cores <- detectCores() - 1
       }
     }
-
     cl <- makeCluster(cl.cores)
     registerDoParallel(cl)
-
     ff <- foreach(i = 1:t, .combine = "rbind") %dopar% {
       vids <- !is.na(xs[, i])
       xv <- xs[vids, i]
       yv <- ys[vids]
       x0v <- X0[vids, ]
       MLE1 <- emma.REMLE.c(yv, x0v, K = 1, xv, ngrids = 100, llim = -10, ulim = 10, esp = 1e-10, eig.L = NULL, eig.R = NULL)
-
       if (length(MLE1$vg) != 0) {
         ML1s[i] <- MLE1$REML
         ML0s[i] <- MLE0$REML
@@ -747,34 +679,23 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     }
     stopCluster(cl)
     row.names(ff) <- NULL
-
     REML.LRT.c2 <- list(ps = ff[, 1], bhats = ff[, 2], deltas = ff[, 3], d = ff[, 4], ML1s = ff[, 5], ML0s = ff[, 6], stats = ff[, 7], vbs = ff[, 8], ves = ff[, 9])
-    
-
-
     rm(Z, xs)
     gc()
-
     REML.LRT.c2.new <- data.frame(REML.LRT.c2)
     mafall <- apply(snp1[, ], 1, maf.fun)
-
     rm(snp1)
     gc()
-
     mafall1 <- unlist(mafall)
     mafall2 <- matrix(mafall1, nrow = 4)
     mafall3 <- t(mafall2)
     mafall4 <- data.frame(mafall3)
     names(mafall4) <- c("p1", "p2", "p3", "maf")
     MAF <- mafall4$maf
-
     var.bb <- apply((C2 %*% mydata[, ]), 2, var) * REML.LRT.c2.new$bhats^2
     pve.allr2 <- var.bb / apply(cbind(matrix(var(C2 %*% Y), nrow = dim(REML.LRT.c2.new)[1]), (var.bb + REML.LRT.c2.new$ves)), 1, max)
-
-
     rm(C2, mydata)
     gc()
-
     parms <- data.frame(chr.locus = xnames, REML.LRT.c2.new, MAF, pve.allr2)
     names(parms) <- NULL
     parms <- as.matrix(parms)
@@ -782,21 +703,17 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     ress1 <- ress[ress[, 3] != 1, ]
     resp <- as.matrix(ress1[, 3])
     pmin <- min(resp[resp != 0])
-
     parmeter <- cbind(parms[, 1:5], parms[, 10:13])
     parmeter[, 3] <- -log10(parmeter[, 3])
     parmeter[which(abs(parmeter) > 1e-4)] <- round(parmeter[which(abs(parmeter) > 1e-4)], 4)
     parmeter[which(abs(parmeter) < 1e-4)] <- as.numeric(sprintf("%.4e", parmeter[which(abs(parmeter) < 1e-4)]))
     parmeter[which(abs(parmeter[, 5]) > 1e-4), 5] <- round(parmeter[which(abs(parmeter[, 5]) > 1e-4), 5], 4)
     parmeter[which(abs(parmeter[, 5]) < 1e-4), 5] <- as.numeric(sprintf("%.4e", parmeter[which(abs(parmeter[, 5]) < 1e-4), 5]))
-
     parmsShow <- cbind(gen[, 1], parmeter)
     colnames(parmsShow) <- c(
       "maker", "Chromosome", "Marker position (bp)", "p-value", "SNP effect",
       "QTN-to-residual variance ratio", "QTN variance", "Residual variance", "MAF", "r2 (%)"
     )
-
-
     return(result = parmsShow)
   }
 }
