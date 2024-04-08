@@ -6,9 +6,7 @@
  
  @param kk is the initial kinship matrix
  @param psmatrix is the initial P-value
- @param Likelihood is the likelihood function type, "REML" represents restrictive maximum likelihood; "ML" represents maximum likelihood
- @param svpal is the P-value threshold for significance in first step.
- @param Genformat is the gene mode (including 0 and 1)
+ @param svpal is the P-value threshold for significance in first step
  @param CLO is the the number of computer cores
  @param snp is the number of genotypes
- @param spvalue is the P-value threshold for significance in third step.
+ @param spvalue is the P-value threshold for significance in third step
