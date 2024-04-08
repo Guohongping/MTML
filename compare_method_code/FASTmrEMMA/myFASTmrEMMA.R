@@ -70,39 +70,6 @@ myFASTmrEMMA <- function(gen, phe, genRaw, kk, psmatrix, svpal, svmlod, Genforma
     flagps <- 0
   }
 
-  # if(is.null(svpal)==TRUE||is.null(svmlod)==TRUE){
-  # warning("Please set parameter!")
-  # }
-
-  # if((svpal<0)||(svpal>1))
-  # {
-  # warning("Please input critical P-value between 0 and 1!")
-  # }
-
-  # if(svmlod<0)
-  # {
-  # warning("Please input critical LOD score: >0!")
-  # }
-  # if(exists("gen")==FALSE)
-  # {
-  # warning("Please input correct genotype dataset !")
-  # }
-  # if(exists("phe")==FALSE)
-  # {
-  # warning("Please input correct phenotype dataset !")
-  # }
-  # if(exists("kk")==FALSE)
-  # {
-  # warning("Please input correct kinship (K) dataset !")
-  # }
-  # if((exists("gen")==TRUE)&&(exists("phe")==TRUE)&&(ncol(gen)!=(nrow(phe)+2)))
-  # {
-  # warning("Sample sizes between genotypic and phenotypic datasets do not equal !")
-  # }
-
-  # if((exists("gen")==TRUE)&&(exists("phe")==TRUE)&&(exists("kk")==TRUE)&&((ncol(gen)==(nrow(phe)+2)))&&(svpal>=0)&&(svpal<=1)&&(svmlod>=0))
-
-
   parmsShow <- NULL
   wan <- NULL
   parms <- NULL
