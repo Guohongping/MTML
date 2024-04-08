@@ -4,12 +4,12 @@
 #' @param nr is the number of genotypes
 #' @param nc is the number of traits
 
-cauchyComb <- function(final,weig = NULL,nr,nc){
-  if(is.null(weig) == TRUE){
-    wei = ncol(final)
-    weig = 1/wei
+cauchyComb <- function(final, weig = NULL, nr, nc) {
+  if (is.null(weig) == TRUE) {
+    wei <- ncol(final)
+    weig <- 1 / wei
   }
-  sta0 = rowSums(matrix((tan((0.5-as.numeric(final))*pi)*weig),nr,nc))
-  pval = 0.5-atan(sta0)/pi
+  sta0 <- rowSums(matrix((tan((0.5 - as.numeric(final)) * pi) * weig), nr, nc))
+  pval <- 0.5 - atan(sta0) / pi
   return(pval)
 }
