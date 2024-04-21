@@ -97,9 +97,19 @@
 		Calculate the respective population structure matrix of three flowering-time related traits using ADMIXTURE software 
                 (http://software.genetics.ucla.edu/admixture/download.html).
 		
-		MTML_real.R
-		The main R script for Arabidopsis thaliana real data analysis using the proposed MTML method.
-		Enter R space, input "source("./data/real_data/MTML_real.R")"
+		real_format_conversion.R
+		Convert Arabidopsis thaliana genotype data into binary format functions required by PLINK software.
+		
+		GEMMA_mvLMM_real.sh
+		Perform GEMMA and mvLMM in Arabidopsis thaliana real datasets.
+		
+		gen_info.csv
+		The imformation of SNP loci and their mapped genes in Arabidopsis thaliana. (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001735.4/download.html)
+		
+		real_gene.R
+		The main R script for Arabidopsis thaliana real data analysis using the proposed MTML, FASTmrEMMA, GEMMA and mvLMM method.
+		Enter R space, input "source("./data/real_data/real_gene.R")"
+		
 		
  ./compare_method_code/:
         
