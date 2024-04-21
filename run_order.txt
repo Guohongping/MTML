@@ -22,8 +22,6 @@ Before run these codes, there are some warnings:
   
   
 2. real data analysis:
-   MTML：Rscript ./data/MTML_real.R
-   FASTmrEMMA: Rscript ./compare_method_code/FASTmrEMMA/FASTmrEMMA_real.R
-   GEMMA and mvLMM: 1)Rscript ./compare_method_code/GEMMA_mvLMM/real_format_conversion.R  
-                    2)source ./compare_method_code/GEMMA_mvLMM/GEMMA_mvLMM_real.sh  
-		    3)Rscript ./compare_method_code/GEMMA_mvLMM/GEMMA_mvLMM_real.R
+   1)Rscript ./data/real_data/real_format_conversion.R  
+   2)source ./data/real_data/GEMMA_mvLMM_real.sh  
+   3)Rscript ./data/real_data/real_gene.R
