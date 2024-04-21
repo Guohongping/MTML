@@ -122,10 +122,7 @@
 			The main R script of FASTmrEMMA method.
 			Enter R space, input "source("./compare_method_code/FASTmrEMMA/FASTmrEMMA_step.R")"
 			
-			FASTmrEMMA_real.R
-			The main R script for Arabidopsis thaliana real data analysis using FASTmrEMMA method.
-		        Enter R space, input "source("./compare_method_code/FASTmrEMMA/FASTmrEMMA_real.R")"
-			
+
 		GEMMA_mvLMM/:
 		    
                         plink.map.R   plink.ped.R
