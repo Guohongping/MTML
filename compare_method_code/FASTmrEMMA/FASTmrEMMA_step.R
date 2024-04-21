@@ -37,7 +37,7 @@ for (k in 1:nrow(trait_info)) {
     result5 <- NULL
     for (i in 1:N) {
       phe <- as.matrix(phenotype[, i])
-      result <- myFASTmrEMMA(gen, phe, genRaw, kk, psmatrix, svpal, svmlod, Genformat, Likelihood, CLO)
+      result <- myFASTmrEMMA(gen, phe, genRaw, kk, psmatrix, svpal, svmlod, CLO)
       result1 <- as.matrix(as.data.frame(result))
       result2 <- result1[, 6]
       result3 <- 10^(-abs(as.numeric(result2)))
