@@ -160,14 +160,6 @@
 			GEMMA_mvLMM_statistic.R
 			Calculate the statistical powers of four QTNs, average power and type I error rate using GEMMA and mvLMM in nine different scenarios.
 			
-			real_format_conversion.R
-			Convert Arabidopsis thaliana genotype data into binary format functions required by PLINK software.
-			
-			GEMMA_mvLMM_real.sh
-			Perform GEMMA and mvLMM in Arabidopsis thaliana real datasets.
-			
-			GEMMA_mvLMM_real.R
-			Show the results of GEMMA and mvLMM in Arabidopsis thaliana real datasets.
 
  ./results_figures_tables/:
         
