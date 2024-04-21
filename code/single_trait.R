@@ -7,7 +7,6 @@
 #' @param CLO is the the number of computer cores
 
 single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
-  
   ## The function to calculate the kinship matrix
   if (is.null(kk)) {
     emma.kinship <- function(snps, method = "additive", use = "all") {
@@ -589,6 +588,8 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     }
     rm(kk)
     gc()
+
+    ## The function to calculate the minior allele frenquency
     maf.fun <- function(snp) {
       leng <- length(snp)
       id.1 <- length(which(snp == 1))
@@ -639,6 +640,8 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
     d <- vector(length = t)
     stats <- vector(length = t)
     ps <- vector(length = t)
+
+    ## The code to start cores for parallel computing
     cl.cores <- detectCores()
     if ((cl.cores <= 2) || (is.null(CLO) == FALSE)) {
       cl.cores <- 1
@@ -678,6 +681,8 @@ single_trait <- function(gen, phe, kk, psmatrix, svpal, CLO) {
       ff <- c(ps[i], bhats[i], deltas[i], d[i], ML1s[i], ML0s[i], stats[i], vgs[i], ves[i])
     }
     stopCluster(cl)
+
+    
     row.names(ff) <- NULL
     REML.LRT.c2 <- list(ps = ff[, 1], bhats = ff[, 2], deltas = ff[, 3], d = ff[, 4], ML1s = ff[, 5], ML0s = ff[, 6], stats = ff[, 7], vbs = ff[, 8], ves = ff[, 9])
     rm(Z, xs)
