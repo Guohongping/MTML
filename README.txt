@@ -28,18 +28,21 @@
  [1] compiler_3.6.3
 
  R packages：
- [1] dplyr_1.1.4
- [2] MASS_7.3.54
- [3] readxl_1.3.1
- [4] mvtnorm_1.1.3
- [5] parallel_3.6.3
- [6] foreach_1.5.2
- [7] iterators_1.0.14
- [8] doParallel_1.0.17
- [9] bigmemory_4.6.1
+  [1] dplyr_1.1.4
+  [2] MASS_7.3.54
+  [3] readxl_1.3.1
+  [4] mvtnorm_1.1.3
+  [5] parallel_3.6.3
+  [6] foreach_1.5.2
+  [7] iterators_1.0.14
+  [8] doParallel_1.0.17
+  [9] bigmemory_4.6.1
+ [10] tibble_3.2.1
  
-  Notice: (1)there is a documentation called “run_order.txt” in current directory to illustrate the file running order.
-          (2)there is a documentation called “para_simu.txt” in current directory to illustrate the simulation hyperparameters.
+  Notice: (1)There is a documentation called “run_order.txt” in current directory to illustrate the file running order.
+          (2)There is a documentation called “para_simu.txt” in current directory to illustrate the simulation hyperparameters.
+		  (3)In real data analysis, for the compared method FASTmrEMMA, there may produce slight different results accroding to the different R versions, R package versions,
+		     and Linux server versions.
 
  MTML contains the following code and data files which are required to reproduce the results of the manuscript.
  
@@ -196,8 +199,3 @@
 			Arabidopsis_genes.xlsx
 			The comprehensive overview of the genes identified by MTML in three Arabidopsis thaliana flowering-time related traits (LDV, SDV and 2W).
 			
-			
-			
-​
-     
-	    
