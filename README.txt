@@ -41,7 +41,7 @@
  
   Notice: (1)There is a documentation called “run_order.txt” in current directory to illustrate the file running order.
           (2)There is a documentation called “para_simu.txt” in current directory to illustrate the simulation hyperparameters.
-		  (3)In real data analysis, for the compared method FASTmrEMMA, there may produce slight different results accroding to the different R versions, R package versions,
+          (3)In real data analysis, for the compared method FASTmrEMMA, there may produce slight different results accroding to the different R versions, R package versions,
 		     and Linux server versions.
 
  MTML contains the following code and data files which are required to reproduce the results of the manuscript.
