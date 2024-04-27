@@ -97,6 +97,11 @@ result2 <- as.matrix(as.data.frame(result))
 result2 <- as.data.frame(t(result2))
 if (nrow(result2) == 1) {
   trait2 <- NULL
+}else {
+  result2 <- as.data.frame(result)
+  trait2 <- rownames_to_column(result2, var = "order")
+  tt <- c(rep("trait2", times = nrow(trait2)))
+  trait2 <- cbind(tt, trait2)
 }
 phe <- as.matrix(phen_ph[, 3])
 result <- myFASTmrEMMA(gen = gen, phe = phe, genRaw = genRaw, kk = NULL, psmatrix = NULL, svpal = 0.05, svmlod = 3, CLO = 16)
